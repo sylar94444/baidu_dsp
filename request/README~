@@ -1,0 +1,30 @@
+¹¦ÄÜ£º
+    Ä£Äâ°Ù¶ÈÁ÷Á¿½»Ò×ÇëÇó¾º¼Û£¬ ²úÉúËæ»úµÄ¾º¼ÛÇëÇó£¬Ê¹ÓÃHTTP POST·¢ËÍµ½Ö¸¶¨µÄURL,¶Ô·µ»Ø½øĞĞÍ³¼Æ¡£
+°²×°²½Öè£º
+    1. °²×°protobuf ¼°python »·¾³
+        ÔÚ http://code.google.com/p/protobuf/ ÏÂÔØÔ´Âë
+        tar -zxvf protobuf-2.4.1.tar.gz (ĞèÒª¸ßÓÚ2.4.1)
+        cd protobuf-2.4.1;
+        ./configure ( Èç¹ûÄ¿Â¼Ã»ÓĞÈ¨ÏŞµÄ»°, Çë¼ÓÉÏ--prefix=<path> )
+        make;
+        make install;
+        cd python;
+        python setup.py install ( Èç¹ûÃ»ÓĞpython£¬Çë×Ô¼º°²×° ) 
+    2. ±àÒë baidu_realtime_bidding.proto  Ğ­ÒéÎÄ¼ş
+        Ö±½ÓÔÚµ±Ç°Ä¿Â¼Ö´ĞĞmake
+        Èç¹ûĞ­ÒéÎÄ¼şÓĞ¸üĞÂ£¬ÇëÖØĞÂmake
+Ê¹ÓÃ·½·¨£º
+    1. ²âÊÔµ¥Ò»ÇëÇó£º
+        python requester.py  --url=<url>  --max_qps=1 --requests=1 --mobile_proportion=0.1 
+    2. ²âÊÔ¶à¸öÇëÇó, ÓÃmax_qps¿ØÖÆ¸ºÔØ£¬ ÓÃ--requests»òÕß--seconds¿ØÖÆÊ±¼ä mobile_proportion¿ØÖÆmobileÇëÇó±ÈÀı£
+        python requester.py  --url=<url>  --max_qps=<max_qps> --requests=100 --mobile_proportion=0.2 
+        python requester.py  --url=<url>  --max_qps=<max_qps> --seconds=100 
+    3. Êä³öÎÄ¼ş£¬¼ÇÂ¼¾º¼ÛĞÅÏ¢£º
+        *   good-<timestamp>.log  
+            ¼ÇÂ¼¾º¼Û³É¹¦µÄÇëÇóºÍ·µ»Ø
+        *   error-<timestamp>.log 
+            ¼ÇÂ¼http ·µ»ØÂë²»Îª200µÄÇëÇó
+        *   invalid-<timestamp>.log
+            ¼ÇÂ¼ÎŞ·¨ÕıÈ·½âÎöµÄÇëÇó
+        *   problematic-<timestamp>.log
+            ¼ÇÂ¼´æÔÚÎÊÌâµÄÇëÇó¼°·µ»Ø 
